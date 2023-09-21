@@ -1,10 +1,10 @@
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import {Action} from "../middleware/actions";
 
 export const userAuth = {
     login: (action: Action) => {
-        const name = action.payload.displayName;
-        if(name) {
-            console.log(`User ${name} Logged`);
-        }
-    },
-};
+        const auth = getAuth();
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider);
+        },
+    };
